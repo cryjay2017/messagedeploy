@@ -10,7 +10,6 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 
 append :linked_files, "config/database.yml", "config/master.key"
 
-
 set :keep_releases, 5
 
 # Default branch is :master

@@ -8,7 +8,11 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 set :stage, :production
 server '47.105.115.244', user: 'deploy', roles: %w{app db web}
-
+set :ssh_options, {
+  keys: %w(~/.ssh/id_rsa),
+  forward_agent: true,
+  auth_methods: %w(publickey password)
+}
 # role-based syntax
 # ==================
 
