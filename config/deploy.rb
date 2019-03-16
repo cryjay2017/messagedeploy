@@ -10,7 +10,6 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 
 append :linked_files, "config/database.yml", "config/master.key"
 
-set :passenger_restart_with_touch, true
 
 set :keep_releases, 5
 
