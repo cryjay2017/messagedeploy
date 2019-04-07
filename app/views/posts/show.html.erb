@@ -1,19 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @post.author %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div id="post-content">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="title"><%= @post.title %></h1>
+      <p class="date">发表于 <%= time_ago_in_words(@post.created_at) %> 之前</p>
+      <p class="content"><%= @post.content %></p>
+      <%= link_to 'Back', posts_path %> |
+      <%= link_to 'Edit', edit_post_path(@post) %> |
+      <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: "Are you sure"} %>   
+    </div>
+  </div> 
+</div> 

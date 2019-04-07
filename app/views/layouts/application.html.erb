@@ -10,6 +10,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/navbar'  %>
+      <div class="container-fluid">
+        <% flash.each do |name, mes| %>
+          <%= content_tag :div, mes, class: "alert" %>
+        <% end %>
+        <%= yield %>
+      </div>  
+    <%= render 'layouts/footer' %>
   </body>
 </html>
