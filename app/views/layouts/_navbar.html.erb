@@ -9,9 +9,43 @@
         <span class="icon-bar"></span>
       </button>
       <ul class="nav navbar-nav navbar-right ">
-        <li><%= image_tag 'cainian.jpg', size: "60x60", class: "navbar-brand img-circle" %></li>
+        <li><%= image_tag 'cainian.jpg', size: "50x50", class: "navbar-brand img-circle" %></li>
         <li><%= link_to '博客信息', root_path, class: "navbar-brand" %><li>
       </ul>
     </div>
+    
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+        <% if user_signed_in? %>
+          <li class="title-message"><%= link_to '创建信息', new_post_path %></li>
+        <% end  %>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right"> 
+        <% if user_signed_in? %>
+          <li><a>欢迎, <%= current_user.username %></a></li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <span class="user-icon" ><i class="glyphicon glyphicon-log-out"></i></span>
+              <span class="user-out">登出</span>
+            <% end %>
+          </li>
+          <li><%= link_to "修改密码", edit_registration_path(:user) %></li>
+        <% else  %>
+          <li>
+            <%= link_to new_user_session_path do %>
+              <span class="user-icon" ><i class="glyphicon glyphicon-log-in"></i></span>
+              <span class="user-logn">登录</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path do %>
+              <span class="user-icon" ><i class="glyphicon glyphicon-user"></i></span>
+              <span class="user-sign">注册</span>
+            <% end %>
+          </li>
+        <% end  %>
+      </ul> 
+    </div>  
   </div>
 </nav>
