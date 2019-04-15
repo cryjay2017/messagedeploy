@@ -7,6 +7,7 @@ class User < ApplicationRecord
   attr_accessor :login
   
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   #用户名的验证
   validates_presence_of :username, message: "用户不能为空"

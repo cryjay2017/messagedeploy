@@ -4,9 +4,20 @@
       <h1 class="title"><%= @post.title %></h1>
       <p class="date">由 <%= @post.user.username %> 在 <%= time_ago_in_words(@post.created_at) %> 之前发表
       <p class="content"><%= @post.content %></p>
-      <%= link_to 'Back', posts_path %> |
-      <%= link_to 'Edit', edit_post_path(@post) %> |
-      <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: "Are you sure"} %>   
+      
+      <h1><%= pluralize(@post.comments.count, "Comment") %></h1>
+      <h3>评论:</h3>
+      <%= render @post.comments  %>
+      <h3 class="reply-to-mes">回复信息:</h3>
+      <%= render 'comments/form' %>
+       
+      <%= link_to '返回主页', root_path, class: "btn btn-primary" %>
+      <% if user_signed_in? %>
+        <% if @post.user_id == current_user.id  %>
+          <%= link_to '编辑', edit_post_path(@post), class: "btn btn-primary" %>
+          <%= link_to '删除', post_path(@post), method: :delete, class: "btn btn-primary", data: { confirm: "Are you sure"} %>
+        <% end  %>
+      <% end  %>   
     </div>
   </div> 
 </div> 

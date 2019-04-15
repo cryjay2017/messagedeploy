@@ -1,0 +1,9 @@
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <p class="field">
+    <%= f.label :content, "评论内容" %><br>
+    <%= f.text_area :content, rows: 5, cols: 100, placeholder: "写一些回复评论......" %>
+  </p>
+  <p>
+    <%= f.submit "提交评论", class: "btn-custom" %>
+  </p>
+<% end %>
